@@ -1,0 +1,70 @@
+.auth-banner-close-button {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    border: none;
+    background: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  
+  .auth-banner-logo-background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45%;
+    height: 85%;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(180deg, #9acbd0 0%, #006a71 100%);
+    border-bottom-left-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 991.98px) {
+    .auth-banner-logo-background {
+      position: relative;
+      width: 100% !important;
+      height: 180px !important;
+      margin: 0 auto;
+      padding: 0;
+      border-radius: 0;
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      right: 0;
+    }
+}
+.logo-draw path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw-logo 2s ease-out forwards;
+}
+
+@keyframes draw-logo {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.logo-filled {
+  animation: fade-in 0.5s ease-in;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

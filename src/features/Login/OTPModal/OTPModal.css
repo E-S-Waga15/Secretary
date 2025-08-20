@@ -1,0 +1,215 @@
+.otp-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.otp-modal-content {
+  width: 100%;
+  max-width: 1000px;
+  height: 600px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  background-color: white;
+  margin: 20px;
+}
+
+
+
+.otp-content-container {
+  padding: 48px;
+  max-width: 460px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.otp-title {
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  color: #1e1e1e;
+  font-family: "Poppins", sans-serif;
+}
+
+.otp-subtitle {
+  font-size: 15px;
+  color: #666666;
+  margin-bottom: 28px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* OTP specific styles */
+.otp-input-hidden {
+  direction: ltr !important;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.otp-boxes {
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+.otp-box {
+  width: 45px;
+  height: 45px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 24px;
+  font-weight: 600;
+  background-color: white;
+  transition: all 0.2s ease;
+  -webkit-user-select: none;
+  user-select: none;
+  color: #ccc;
+  position: relative;
+}
+
+.otp-box span {
+  font-size: 20px;
+  position: absolute;
+}
+
+.otp-box.clickable {
+  cursor: text;
+}
+
+.otp-box.clickable:hover {
+  border-color: #006A71;
+}
+
+.otp-box.focused {
+  border-color: #006A71;
+  box-shadow: 0 0 0 1px #006A71;
+}
+
+.otp-box.filled {
+  border-color: #006A71;
+  color: #000;
+}
+
+.otp-cursor-blink {
+  width: 2px;
+  height: 24px;
+  background-color: #006A71;
+  animation: blink 1s infinite;
+  position: absolute;
+}
+
+.otp-button {
+  background-color: #121212;
+  border-radius: 999px;
+  padding: 10px 24px;
+  white-space: nowrap;
+  line-height: 1.2;
+  font-size: 16px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  min-width: 140px;
+}
+
+.otp-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.otp-button:not(:disabled) {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.otp-resend-link {
+  font-size: 18px;
+  color: #006A71;
+  text-decoration: none;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 991.98px) {
+
+  .otp-modal-content {
+    height: auto;
+    max-height: 95vh;
+    overflow-y: auto;
+    border-radius: 20px;
+    padding: 0;
+    margin: 16px;
+    width: 95%;
+  }
+
+  .otp-content-container {
+    padding: 32px 0;
+    max-width: 100%;
+  }
+
+  .otp-title {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .otp-subtitle {
+    text-align: center;
+  }
+
+  .otp-flex-column {
+    flex-direction: column !important;
+  }
+
+  .otp-container {
+    width: calc(100% - 48px);
+    margin: 0 24px;
+  }
+
+  .otp-boxes {
+    max-width: 240px;
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  .otp-button {
+    width: 240px;
+    margin: 20px auto 0;
+    min-width: auto;
+  }
+} 
+
+/* لإزالة الأسهم من input[type=number] */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* إزالة الأنماط الافتراضية عند التركيز */
+input[type="number"]:focus {
+  border: 3px solid!important;
+  border-color: #006A71 !important;  /* لون الحدود أزرق */
+  background-color: #ffffff !important;  /* الحقل يصبح أبيض */
+  outline: none !important;
+ 
+  -webkit-appearance: none;
+  appearance: none;
+}

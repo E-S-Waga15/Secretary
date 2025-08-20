@@ -1,0 +1,83 @@
+.specialties-card {
+    background-color: #F8FAFC;
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 0 0 1px #E2E8F0;
+    height: 100%;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+  
+  .specialties-card .icon {
+    background-color: white;
+    border-radius: 12px;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: #006A71;
+    font-size: 28px;
+    transition: transform 0.3s ease;
+  }
+  
+  .specialties-card h3 {
+    margin: 0 0 16px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+    transition: color 0.3s ease;
+  }
+  
+  .specialties-card p {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #6B7280;
+    line-height: 1.5;
+    transition: color 0.3s ease;
+  }
+  
+  .specialties-card.active {
+    background-color: #006A71;
+    color: white;
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0, 106, 113, 0.3);
+  }
+  
+  .specialties-card.active .icon {
+    background-color: white;
+    color: #006A71;
+    transform: scale(1.1) rotate(10deg);
+  }
+  
+  .specialties-card.active h3,
+  .specialties-card.active p {
+    color: white;
+  }
+
+  .specialties-card:hover {
+    transform: translateY(-10px) scale(1.03)
+    !important;
+    background-color: #006A71;
+    box-shadow: 0 30px 60px rgba(0, 106, 113, 0.5);
+  }
+
+  .specialties-card:hover h3,
+  .specialties-card:hover p {
+    color: white;
+  }
+
+  .specialties-card:hover .icon {
+    transform: translateY(-8px) rotate(360deg) scale(1.1);
+    background-color: white;
+    color: #006A71;
+  }
+  

@@ -1,0 +1,174 @@
+.signin-page {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+}
+
+/* اليسار (لأجهزة الديسكتوب) */
+.left-panel {
+  background-color: #006d6d;
+  width: 35%;
+  position: relative;
+  padding: 1rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logo-box {
+  margin-left: 50px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  width: 50px;
+}
+
+.secretary-img {
+  position: absolute;
+  bottom: 20px;
+  left: 5%;
+  width: 90%;
+}
+
+/* اليمين */
+.right-panel {
+  flex: 1;
+  position: relative;
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* الشكل الخلفي */
+.login-bg-layer {
+  position: absolute;
+  width: 720px;
+  height: 420px;
+  background-image: url('../../assets/login-bg.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  z-index: 1;
+}
+
+/* صندوق الدخول */
+.login-box {
+  position: relative;
+  left: -58px;
+  top: -10px;
+  border-radius: 25px;
+  padding: 2rem;
+  width: 400px;
+  max-width: 90%;
+  background: #fff;
+  z-index: 2;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* زر الدخول */
+.login-button {
+  background-color: #006d6d;
+  border: none;
+  border-radius: 8px;
+}
+.login-button :hover {
+  background-color: #f7f7f7 !important;
+
+}
+
+/* الأزهار */
+.floor-img {
+  position: absolute;
+  bottom: 0;
+  right: 50px;
+  width: 200px;
+  opacity: 0.5;
+}
+
+/* placeholder */
+.form-control::placeholder {
+  color: gray;
+  opacity: 1;
+}
+
+/* 📱 موبايل */
+@media (max-width: 768px) {
+  .signin-page {
+    flex-direction: column;
+  }
+
+  /* إلغاء اللوحة الخضراء الكبيرة */
+  .left-panel {
+    width: 100%;
+    min-height: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+  }
+
+  .logo-box {
+    margin-left: 0;
+    padding: 0;
+  }
+
+  .logo-img {
+    width: 40px;
+    margin-right: 8px;
+  }
+
+  .logo-box h3 {
+    font-size: 1.1rem;
+    margin: 0;
+    color: #fff;
+  }
+
+  /* الصورة داخل الشريط الأخضر */
+  .secretary-img {
+    position: static;
+    width: 60px;
+    height: auto;
+  }
+
+  /* الجزء الأيمن يصير بكامل العرض */
+  .right-panel {
+    width: 100%;
+    min-height: auto;
+    padding: 1rem;
+    background: #f7f7f7;
+  }
+
+ 
+  .login-box {
+    width: 75%; 
+    max-width: 300px;
+    position: relative; /* أو absolute حسب مكانك */
+    left: -40px;  /* تحريك لليمين */
+    top: -30px;  /* تحريك للأعلى */
+    padding: 1.5rem;
+  }
+  
+
+  .login-bg-layer {
+    position: absolute;
+    width: 95%;
+    height: 650px;
+   
+    background-image: url('../../assets/login-bg.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    z-index: 1;
+  }
+
+  .floor-img {
+    width: 100px;
+    right: 10px;
+  }
+}

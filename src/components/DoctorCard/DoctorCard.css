@@ -1,0 +1,73 @@
+.doctor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  height: 400px;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.doctor-card:hover {
+  transform: translateY(-5px);
+}
+
+.doctor-image {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.doctor-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  
+  transition: filter 0.3s ease;
+}
+
+.doctor-card:hover .doctor-image img {
+  
+}
+
+.doctor-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 10px 0;
+}
+
+.doctor-specialty {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+}
+
+.appointment-button {
+  background-color: #006A71;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 32px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 200px;
+}
+
+.appointment-button:hover {
+  background-color: #005a60;
+}

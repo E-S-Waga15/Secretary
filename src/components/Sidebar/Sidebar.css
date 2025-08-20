@@ -1,0 +1,96 @@
+.sidebar {
+    width: 260px;
+    height: 102vh;
+    position: fixed;
+    left: -10px;
+    top: -2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #3aa3a3;
+    overflow: hidden;
+    z-index: 50;
+  }
+  
+  .sidebar-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 0;
+  }
+  
+  .sidebar-logo {
+    position: relative;
+    z-index: 2;
+    margin: 40px 20px 20px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+  }
+  
+  .sidebar-logo h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+  }
+  
+  .sidebar-icon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .sidebar-menu {
+    position: relative;
+    z-index: 2;
+    margin-top: 30px;
+    list-style: none;
+    padding: 0 20px;
+    width: 100%;
+  }
+  
+  /* الروابط (NavLink) */
+  .sidebar-menu .menu-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    font-size: 1rem;
+    color: #9ed4d4;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  
+  .sidebar-menu .menu-link:hover {
+    color: #fff;
+  }
+  
+  .sidebar-menu .menu-link.active {
+    color: #fff;
+    font-weight: 500;
+    /* شكل اختياري لو تحب تبين خلفية خفيفة لللينك النشط */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding-left: 10px;
+  }
+  
+  .sidebar-menu .icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .sidebar-doctor-container {
+    margin-top: auto; /* يثبت الصورة في الأسفل */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 20px;
+  }
+  
+  .sidebar-doctor {
+    width: 140px;
+    height: auto;
+  }
+  

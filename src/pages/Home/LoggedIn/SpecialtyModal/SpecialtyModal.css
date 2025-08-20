@@ -1,0 +1,320 @@
+/* SpecialtiesModal.css */
+
+
+.specialties-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.specialties-modal-content {
+  width: 100%;
+  max-width: 1200px; 
+  height: 700px; 
+  border-radius: 20px;
+  position: relative;
+  background-color: white;
+  margin: 20px; 
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: modalEnter 0.4s ease-out;
+}
+
+
+.specialties-modal-header {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 12px 32px 10px;
+  border-bottom: 1px solid #f0f0f0;
+  background-color: #ffffff;
+  border-radius: 20px 20px 0 0;
+
+}
+
+.specialties-close-button {
+
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #666;
+  cursor: pointer;
+  padding: 8px; 
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  z-index: 10;
+
+  order: 2; 
+  margin-left: 10px; 
+}
+
+.specialties-close-button:hover {
+  background-color: #f5f5f5; 
+  color: #333;
+  transform: rotate(90deg);
+}
+
+.specialties-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #006A71;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  flex-grow: 1; 
+  text-align: center; 
+  order: 1; 
+}
+
+
+.specialties-modal-body {
+  flex: 1;
+  padding: 15px 32px 32px 32px; 
+  overflow-y: auto;
+  border-radius: 0 0 20px 20px;
+  display: block;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+  justify-content: center;
+}
+
+
+.specialties-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+
+.specialties-modal-card {
+  background-color: #f8fafc;
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 0 0 1px #e2e8f0;
+
+  height: 100%;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.specialties-modal-card-icon {
+  background-color: white;
+  border-radius: 12px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  color: #006a71;
+  transition: transform 0.3s ease;
+}
+
+.specialties-modal-card-icon img {
+  width: 40px;
+  height: 40px;
+  color: #006a71;
+  object-fit: contain;
+  display: block;
+}
+
+.specialties-modal-card h3 {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  transition: color 0.3s ease;
+}
+
+.specialties-modal-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+}
+
+
+.specialties-modal-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  background-color: #006a71;
+  box-shadow: 0 15px 30px rgba(0, 106, 113, 0.3);
+}
+
+.specialties-modal-card:hover .specialties-modal-card-icon {
+  background-color: white;
+  color: #006a71;
+  transform: scale(1.1) rotate(10deg);
+}
+
+.specialties-modal-card:hover h3,
+.specialties-modal-card:hover p {
+  color: white;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalEnter {
+  from {
+    transform: scale(0.8) translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+
+@media (min-width: 640px) {
+  .specialties-modal-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .specialties-modal-card {
+    min-height: 240px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .specialties-modal-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .specialties-modal-content {
+    max-width: 1200px;
+    height: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .specialties-modal-content {
+    max-width: 95%;
+    height: auto;
+    max-height: 90vh;
+    margin: 15px;
+  }
+
+  .specialties-modal-header {
+    padding: 16px 20px 12px;
+  }
+
+  .specialties-modal-body {
+    padding: 20px;
+  }
+
+  .specialties-title {
+    font-size: 20px;
+  }
+
+  .specialties-modal-card {
+    min-height: 200px;
+    padding: 24px 16px;
+  }
+
+  .specialties-modal-card h3 {
+    font-size: 16px;
+  }
+
+  .specialties-modal-card p {
+    font-size: 13px;
+  }
+
+  .specialties-close-button {
+    font-size: 18px;
+    padding: 6px;
+  }
+}
+
+@media (max-width: 576px) {
+  .specialties-modal-content {
+    margin: 10px;
+    max-width: calc(100% - 20px);
+    border-radius: 15px;
+  }
+
+  .specialties-modal-header {
+    padding: 12px 15px 8px;
+    border-radius: 15px 15px 0 0;
+  }
+
+  .specialties-modal-body {
+    padding: 15px;
+  }
+
+  .specialties-title {
+    font-size: 18px;
+  }
+
+  .specialties-modal-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .specialties-modal-card {
+    min-height: 180px;
+    padding: 20px 12px;
+  }
+
+  .specialties-modal-card-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+  }
+
+  .specialties-modal-card-icon img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Custom scrollbar for all screens */
+.specialties-modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.specialties-modal-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.specialties-modal-body::-webkit-scrollbar-thumb {
+  background: #48a6a7;
+  border-radius: 3px;
+}
+
+.specialties-modal-body::-webkit-scrollbar-thumb:hover {
+  background: #006a71;
+}

@@ -1,0 +1,333 @@
+.doctors-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.doctors-modal-content {
+  width: 100%;
+  max-width: 1200px;
+  height: 600px;
+  border-radius: 20px;
+  position: relative;
+  background-color: white;
+  margin: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: modalEnter 0.4s ease-out;
+}
+
+/* Header Styles */
+.doctors-modal-header {
+  position: relative;
+  padding: 24px 32px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  background-color: #ffffff;
+  border-radius: 20px 20px 0 0;
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #666;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.close-button:hover {
+  background-color: #f5f5f5;
+  color: #333;
+  transform: rotate(90deg);
+}
+
+.specialty-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #006A71;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  padding-right: 50px;
+}
+
+/* Body Styles */
+.doctors-modal-body {
+  flex: 1;
+  padding: 32px;
+  overflow-y: auto;
+  border-radius: 0 0 20px 20px;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #1e1e1e;
+  margin-bottom: 16px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.doctors-slider-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.doctors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  flex: 1;
+  transition: transform 0.5s ease;
+  max-width: 1000px;
+}
+
+/* Slider Buttons */
+.slider-button {
+  background-color: #48A6A7;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(72, 166, 167, 0.3);
+  z-index: 5;
+}
+
+.slider-button:hover {
+  background-color: #006A71;
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(72, 166, 167, 0.4);
+}
+
+.slider-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.slider-button.prev {
+  left: -25px;
+}
+
+.slider-button.next {
+  right: -25px;
+}
+
+/* Slide Animations */
+.slide-left {
+  animation: slideLeft 0.5s ease;
+}
+
+.slide-right {
+  animation: slideRight 0.5s ease;
+}
+
+/* Modal Enter Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalEnter {
+  from {
+    transform: scale(0.8) translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-20px);
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(20px);
+  }
+}
+
+/* Large screens - centered content */
+@media (min-width: 1201px) {
+  .doctors-modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .doctors-slider-container {
+    justify-content: center;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .doctors-modal-content {
+    max-width: 95%;
+    height: auto;
+    max-height: 90vh;
+  }
+
+  .doctors-modal-body {
+    display: block;
+  }
+
+  .section-title {
+    margin-bottom: 32px;
+  }
+
+  .doctors-slider-container {
+    justify-content: flex-start;
+  }
+
+  .doctors-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    max-width: none;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .specialty-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .doctors-modal-content {
+    margin: 15px;
+    max-width: calc(100% - 30px);
+    height: auto;
+    max-height: calc(100vh - 30px);
+  }
+
+  .doctors-modal-header {
+    padding: 16px 20px 12px;
+  }
+
+  .doctors-modal-body {
+    padding: 20px;
+  }
+
+  .specialty-title {
+    font-size: 22px;
+    padding-right: 40px;
+  }
+
+  .section-title {
+    font-size: 20px;
+    margin-bottom: 24px;
+  }
+
+  .doctors-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+  }
+
+  .slider-button {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .doctors-modal-content {
+    margin: 10px;
+    max-width: calc(100% - 30px);
+    height: auto;
+    max-height: calc(100vh - 50px);
+    border-radius: 15px;
+  }
+
+  .doctors-modal-header {
+    padding: 12px 20px 8px;
+    border-radius: 15px 15px 0 0;
+  }
+
+  .doctors-modal-body {
+    padding: 20px;
+    border-radius: 0 0 15px 15px;
+  }
+
+  .specialty-title {
+    font-size: 24px;
+    padding-right: 35px;
+  }
+
+  .section-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .doctors-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .close-button {
+    top: 12px;
+    right: 12px;
+    font-size: 18px;
+    padding: 6px;
+  }
+}
+
+/* Custom scrollbar for all screens */
+.doctors-modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.doctors-modal-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.doctors-modal-body::-webkit-scrollbar-thumb {
+  background: #48A6A7;
+  border-radius: 3px;
+}
+
+.doctors-modal-body::-webkit-scrollbar-thumb:hover {
+  background: #006A71;
+}
