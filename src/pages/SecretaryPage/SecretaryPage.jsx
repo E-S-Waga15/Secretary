@@ -80,7 +80,7 @@ const SecretaryPage = () => {
       Mobile App
     </h5>
     <p className="text-muted mb-3">Scan to download the app</p>
-    <QRCodeSVG value="https://clinic-hub-orpin.vercel.app/files/app-release.apk" size={200} />
+    <QRCodeSVG value="https://clinic-hub-orpin.vercel.app/files/Clinic_Hub.apk" size={200} />
   </Card>
 </div>
 

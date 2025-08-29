@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./AppointmentSchedule.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDailyAppointments } from "../../store/slices/dailyAppointmentsSlice";
+import { payAppointment } from "../../store/slices/paymentSlice";
+import { cancelAppointment, clearCancelState } from "../../store/slices/cancelAppointmentSlice";
 import { FaTimes, FaMoneyBillWave, FaCheckCircle } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,12 +15,16 @@ const AppointmentSchedule = () => {
   );
 
   const [search, setSearch] = useState("");
-  const [payments, setPayments] = useState({});
 
   const today = new Date().toISOString().split("T")[0];
 
   useEffect(() => {
     dispatch(fetchDailyAppointments({ date: today, finished: false }));
+
+    // تنظيف حالة الإلغاء عند خروج المكون
+    return () => {
+      dispatch(clearCancelState());
+    };
   }, [dispatch, today]);
 
   const filteredData = data.filter((item) =>
@@ -35,7 +41,7 @@ const AppointmentSchedule = () => {
     </div>
   );
 
-  // Confirmation Toast
+  // Confirmation Toast for Cancel
   const confirmCancel = (appointmentId) => {
     toast(
       ({ closeToast }) => (
@@ -73,23 +79,28 @@ const AppointmentSchedule = () => {
     );
   };
 
+  // ✅ استدعاء API الإلغاء عبر Slice
   const handleCancel = (appointmentId) => {
-    console.log("Appointment cancelled:", appointmentId);
+    dispatch(cancelAppointment(appointmentId))
+      .unwrap()
+      .then((res) => {
+        toast(CustomToastContent(res.message), {
+          position: "top-center",
+          autoClose: 3000,
+        });
 
-    toast(CustomToastContent("Appointment has been cancelled "), {
-      position: "top-center",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      onClose: () => {
-        
-      },
-    });
+        // تحديث المواعيد بعد الإلغاء
+        dispatch(fetchDailyAppointments({ date: today, finished: false }));
+      })
+      .catch((err) => {
+        toast.error(err, {
+          position: "top-center",
+          autoClose: 3000,
+        });
+      });
   };
+
+  // Confirmation Toast for Payment
   const confirmPayment = (appointmentId) => {
     toast(
       ({ closeToast }) => (
@@ -126,26 +137,26 @@ const AppointmentSchedule = () => {
       }
     );
   };
-  
-  const handlePay = (appointmentId) => {
-    setPayments((prev) => ({
-      ...prev,
-      [appointmentId]: true,
-    }));
 
-    toast(CustomToastContent("Payment successful "), {
-      position: "top-center",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      onClose: () => {
-       
-      },
-    });
+  // ✅ استدعاء API الدفع عبر الـ Slice
+  const handlePay = (appointmentId) => {
+    dispatch(payAppointment(appointmentId))
+      .unwrap()
+      .then((res) => {
+        toast(CustomToastContent(res.message), {
+          position: "top-center",
+          autoClose: 3000,
+        });
+
+        // تحديث المواعيد بعد الدفع
+        dispatch(fetchDailyAppointments({ date: today, finished: false }));
+      })
+      .catch((err) => {
+        toast.error(err, {
+          position: "top-center",
+          autoClose: 3000,
+        });
+      });
   };
 
   return (
@@ -199,7 +210,7 @@ const AppointmentSchedule = () => {
                     <td>{row.doctor_name}</td>
 
                     <td>
-                      {payments[row.appointment_id] ? (
+                      {row.paid ? (
                         <span className="status paid">Paid</span>
                       ) : (
                         <span className="status unpaid">Unpaid</span>
@@ -210,7 +221,7 @@ const AppointmentSchedule = () => {
                       <button
                         className="action-btn pay-btn"
                         onClick={() => confirmPayment(row.appointment_id)}
-                        disabled={payments[row.appointment_id]}
+                        disabled={row.paid}
                       >
                         <FaMoneyBillWave />
                       </button>

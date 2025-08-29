@@ -13,6 +13,8 @@ import appointmentsReducer from './slices/appointmentsSlice';
 import secretaryAuthReducer from "./slices/secretaryAuthSlice";
 import dailyAppointmentsReducer from "./slices/dailyAppointmentsSlice";
 import onDutyDoctorsReducer from "./slices/onDutyDoctorsSlice";
+import paymentReducer from "./slices/paymentSlice";
+import cancelAppointmentReducer from "./slices/cancelAppointmentSlice";
 const store = configureStore({
   reducer: {
     auth: authReducer,
@@ -28,6 +30,8 @@ const store = configureStore({
     secretaryAuth: secretaryAuthReducer,
     dailyAppointments: dailyAppointmentsReducer,
     onDutyDoctors: onDutyDoctorsReducer,
+    payment: paymentReducer,
+    cancelAppointment: cancelAppointmentReducer,
   },
 });
 
