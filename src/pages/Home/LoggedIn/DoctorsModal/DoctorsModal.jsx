@@ -23,7 +23,7 @@ const DoctorsModal = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
   const [slideDirection, setSlideDirection] = useState("");
-  const [isModalOpen, setModalOpen] = useState(false);
+
   useEffect(() => {
     const checkScreenSize = () => {
       setIsLargeScreen(window.innerWidth > 1200);
@@ -45,14 +45,20 @@ const DoctorsModal = ({
   }, [isOpen]);
 
   const handlePrevClick = () => {
+    if (doctors.length <= 3) return;
     setSlideDirection("slide-right");
-    setCurrentIndex((prev) => (prev === 0 ? doctors.length - 4 : prev - 1));
+    setCurrentIndex((prev) =>
+      prev === 0 ? doctors.length - 3 : prev - 1
+    );
     setTimeout(() => setSlideDirection(""), 500);
   };
 
   const handleNextClick = () => {
+    if (doctors.length <= 3) return;
     setSlideDirection("slide-left");
-    setCurrentIndex((prev) => (prev === doctors.length - 4 ? 0 : prev + 1));
+    setCurrentIndex((prev) =>
+      prev >= doctors.length - 3 ? 0 : prev + 1
+    );
     setTimeout(() => setSlideDirection(""), 500);
   };
 
@@ -61,10 +67,6 @@ const DoctorsModal = ({
       onClose();
     }
   };
-
-  const displayedDoctors = isLargeScreen
-    ? doctors.slice(currentIndex, currentIndex + 4)
-    : doctors;
 
   if (!isOpen) return null;
 
@@ -81,7 +83,7 @@ const DoctorsModal = ({
         <div className="doctors-modal-body">
           {loading ? (
             <>
-              <SpinnersLoading/>
+              <SpinnersLoading />
               <p>Loading doctors...</p>
             </>
           ) : error ? (
@@ -97,8 +99,15 @@ const DoctorsModal = ({
                 </button>
               )}
 
-              <div className={`doctors-grid ${slideDirection}`}>
-                {displayedDoctors.map((doctor) => (
+              <div
+                className={`${
+                  isLargeScreen ? "doctors-row" : "doctors-grid"
+                } ${slideDirection}`}
+              >
+                {(isLargeScreen
+                  ? doctors.slice(currentIndex, currentIndex + 3)
+                  : doctors
+                ).map((doctor) => (
                   <DoctorCard
                     key={doctor.id}
                     image={doctor.imageUrl}
